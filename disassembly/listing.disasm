@@ -1,0 +1,1038 @@
+Disassembly Listing for 13_Teclado_4X4
+Generated From:
+F:/WORKSPACE/MICROCHIP/uC_2018_I/13_Teclado_4X4/dist/default/production/13_Teclado_4X4.production.elf
+09-may-2018 17:28:36
+
+---  f:/workspace/microchip/uc_2018_i/13_teclado_4x4/teclado_4x4.h  -------------------------------------
+1:                   /* 
+2:                    * File:   Teclado_4X4.h
+3:                    * Author: Juancho
+4:                    *
+5:                    * Created on 9 de mayo de 2018, 16:16
+6:                    */
+7:                   
+8:                   #ifndef TECLADO_4X4_H
+9:                   #define	TECLADO_4X4_H
+10:                  
+11:                  #define SI 1
+12:                  #define NO 0
+13:                  
+14:                  // definicion de los pines para las columnas del teclado
+15:                  #define C0  LATAbits.LATA1
+16:                  #define C1  LATAbits.LATA2
+17:                  #define C2  LATAbits.LATA3
+18:                  #define C3  LATAbits.LATA4
+19:                  
+20:                  #define DIR_C0  TRISAbits.TRISA1
+21:                  #define DIR_C1  TRISAbits.TRISA2
+22:                  #define DIR_C2  TRISAbits.TRISA3
+23:                  #define DIR_C3  TRISAbits.TRISA4
+24:                  
+25:                  #define R0  PORTBbits.RB9
+26:                  #define R1  PORTBbits.RB10
+27:                  #define R2  PORTBbits.RB11
+28:                  #define R3  PORTBbits.RB13
+29:                  
+30:                  #define DIR_R0  TRISBbits.TRISB9
+31:                  #define DIR_R1  TRISBbits.TRISB10
+32:                  #define DIR_R2  TRISBbits.TRISB11
+33:                  #define DIR_R3  TRISBbits.TRISB13
+34:                  
+35:                  
+36:                  #define PULL_UP_R0(control) CNPUBbits.CNPUB9=control
+37:                  #define PULL_UP_R1(control) CNPUBbits.CNPUB10=control
+38:                  #define PULL_UP_R2(control) CNPUBbits.CNPUB11=control
+39:                  #define PULL_UP_R3(control) CNPUBbits.CNPUB13=control
+40:                  
+41:                  #define col_config() DIR_C0=0; DIR_C1=0; DIR_C2=0; DIR_C3=0
+42:                  #define row_config() DIR_R0=1; DIR_R1=1; DIR_R2=1; DIR_R3=1
+43:                  #define use_pull_up(cntrl) PULL_UP_R0(cntrl); PULL_UP_R1(cntrl); PULL_UP_R2(cntrl); PULL_UP_R3(cntrl)
+44:                  #define clear_columns() C0=0; C1=0; C2=0; C3=0
+45:                  
+46:                  
+47:                  
+48:                  void teclado_init(void)
+49:                  {
+50:                      col_config();
+9D0004B8  3C02BF88   LUI V0, -16504
+9D0004BC  90436010   LBU V1, 24592(V0)
+9D0004C0  7C030844   INS V1, ZERO, 1, 1
+9D0004C4  A0436010   SB V1, 24592(V0)
+9D0004C8  90436010   LBU V1, 24592(V0)
+9D0004CC  7C031084   INS V1, ZERO, 2, 1
+9D0004D0  A0436010   SB V1, 24592(V0)
+9D0004D4  90436010   LBU V1, 24592(V0)
+9D0004D8  7C0318C4   INS V1, ZERO, 3, 1
+9D0004DC  A0436010   SB V1, 24592(V0)
+9D0004E0  90436010   LBU V1, 24592(V0)
+9D0004E4  7C032104   INS V1, ZERO, 4, 1
+9D0004E8  A0436010   SB V1, 24592(V0)
+51:                      row_config();
+9D0004EC  3C02BF88   LUI V0, -16504
+9D0004F0  94446110   LHU A0, 24848(V0)
+9D0004F4  24030001   ADDIU V1, ZERO, 1
+9D0004F8  7C644A44   INS A0, V1, 9, 1
+9D0004FC  A4446110   SH A0, 24848(V0)
+9D000500  94446110   LHU A0, 24848(V0)
+9D000504  7C645284   INS A0, V1, 10, 1
+9D000508  A4446110   SH A0, 24848(V0)
+9D00050C  94446110   LHU A0, 24848(V0)
+9D000510  7C645AC4   INS A0, V1, 11, 1
+9D000514  A4446110   SH A0, 24848(V0)
+9D000518  94446110   LHU A0, 24848(V0)
+9D00051C  7C646B44   INS A0, V1, 13, 1
+9D000520  A4446110   SH A0, 24848(V0)
+52:                      use_pull_up(SI);
+9D000524  3C02BF88   LUI V0, -16504
+9D000528  94446150   LHU A0, 24912(V0)
+9D00052C  7C644A44   INS A0, V1, 9, 1
+9D000530  A4446150   SH A0, 24912(V0)
+9D000534  94446150   LHU A0, 24912(V0)
+9D000538  7C645284   INS A0, V1, 10, 1
+9D00053C  A4446150   SH A0, 24912(V0)
+9D000540  94446150   LHU A0, 24912(V0)
+9D000544  7C645AC4   INS A0, V1, 11, 1
+9D000548  A4446150   SH A0, 24912(V0)
+9D00054C  94446150   LHU A0, 24912(V0)
+9D000550  7C646B44   INS A0, V1, 13, 1
+9D000554  A4446150   SH A0, 24912(V0)
+53:                      clear_columns();    
+9D000558  3C02BF88   LUI V0, -16504
+9D00055C  90436030   LBU V1, 24624(V0)
+9D000560  7C030844   INS V1, ZERO, 1, 1
+9D000564  A0436030   SB V1, 24624(V0)
+9D000568  90436030   LBU V1, 24624(V0)
+9D00056C  7C031084   INS V1, ZERO, 2, 1
+9D000570  A0436030   SB V1, 24624(V0)
+9D000574  90436030   LBU V1, 24624(V0)
+9D000578  7C0318C4   INS V1, ZERO, 3, 1
+9D00057C  A0436030   SB V1, 24624(V0)
+9D000580  90436030   LBU V1, 24624(V0)
+9D000584  7C032104   INS V1, ZERO, 4, 1
+9D000588  A0436030   SB V1, 24624(V0)
+9D00058C  03E00008   JR RA
+9D000590  00000000   NOP
+54:                      
+55:                  }
+56:                  
+57:                  
+58:                  
+59:                  #endif	/* TECLADO_4X4_H */
+60:                  
+---  f:/workspace/microchip/uc_2018_i/13_teclado_4x4/main.c  --------------------------------------------
+1:                   /* 
+2:                    * File:   main.c
+3:                    * Author: Juancho
+4:                    *
+5:                    * Created on 5 de abril de 2018, 23:50
+6:                    */
+7:                   #include <stdio.h>
+8:                   #include "systemPIC32MX.h"
+9:                   #include "delay.h"
+10:                  #include "M_LCD_16X2.h"
+11:                  #include "M_Timers.h"
+12:                  #include "Teclado_4X4.h"
+13:                  
+14:                  /*
+15:                   * 
+16:                   */
+17:                  typedef struct
+18:                  {
+19:                      unsigned f0:1;
+20:                      unsigned f1:1;
+21:                      unsigned f2:1;
+22:                      unsigned f3:1;
+23:                      unsigned f4:1;
+24:                      unsigned f5:1;
+25:                  }soft_flags;
+26:                  
+27:                  volatile soft_flags banderas;
+28:                  volatile unsigned char msg[20];
+29:                  volatile unsigned int counter=0;
+30:                  
+31:                  
+32:                  
+33:                  
+34:                  void __ISR(_CHANGE_NOTICE_VECTOR,IPL6SOFT) Change_Notice(void)
+35:                  {
+9D000594  415DE800   RDPGPR SP, SP
+9D000598  401A7000   MFC0 K0, EPC
+9D00059C  401B6000   MFC0 K1, Status
+9D0005A0  27BDFF90   ADDIU SP, SP, -112
+9D0005A4  AFBA006C   SW K0, 108(SP)
+9D0005A8  401A6002   MFC0 K0, SRSCtl
+9D0005AC  AFBB0068   SW K1, 104(SP)
+9D0005B0  AFBA0064   SW K0, 100(SP)
+9D0005B4  7C1B7844   INS K1, ZERO, 1, 15
+9D0005B8  377B1800   ORI K1, K1, 6144
+9D0005BC  409B6000   MTC0 K1, Status
+9D0005C0  AFBF0054   SW RA, 84(SP)
+9D0005C4  AFB90050   SW T9, 80(SP)
+9D0005C8  AFB8004C   SW T8, 76(SP)
+9D0005CC  AFAF0048   SW T7, 72(SP)
+9D0005D0  AFAE0044   SW T6, 68(SP)
+9D0005D4  AFAD0040   SW T5, 64(SP)
+9D0005D8  AFAC003C   SW T4, 60(SP)
+9D0005DC  AFAB0038   SW T3, 56(SP)
+9D0005E0  AFAA0034   SW T2, 52(SP)
+9D0005E4  AFA90030   SW T1, 48(SP)
+9D0005E8  AFA8002C   SW T0, 44(SP)
+9D0005EC  AFA70028   SW A3, 40(SP)
+9D0005F0  AFA60024   SW A2, 36(SP)
+9D0005F4  AFA50020   SW A1, 32(SP)
+9D0005F8  AFA4001C   SW A0, 28(SP)
+9D0005FC  AFA30018   SW V1, 24(SP)
+9D000600  AFA20014   SW V0, 20(SP)
+9D000604  AFA10010   SW AT, 16(SP)
+9D000608  00001012   MFLO V0
+9D00060C  AFA2005C   SW V0, 92(SP)
+9D000610  00001810   MFHI V1
+9D000614  AFA30058   SW V1, 88(SP)
+36:                      if(IFS1bits.CNAIF==1)
+9D000618  3C02BF88   LUI V0, -16504
+9D00061C  8C421040   LW V0, 4160(V0)
+9D000620  30422000   ANDI V0, V0, 8192
+9D000624  10400003   BEQ V0, ZERO, 0x9D000634
+9D000628  00000000   NOP
+37:                      {
+38:                          delay_ms(20);
+9D00062C  0F40028D   JAL delay_ms
+9D000630  24040014   ADDIU A0, ZERO, 20
+39:                        
+40:                      }
+41:                      
+42:                     
+43:                  }
+9D000634  8FA2005C   LW V0, 92(SP)
+9D000638  00400013   MTLO V0
+9D00063C  8FA30058   LW V1, 88(SP)
+9D000640  00600011   MTHI V1
+9D000644  8FBF0054   LW RA, 84(SP)
+9D000648  8FB90050   LW T9, 80(SP)
+9D00064C  8FB8004C   LW T8, 76(SP)
+9D000650  8FAF0048   LW T7, 72(SP)
+9D000654  8FAE0044   LW T6, 68(SP)
+9D000658  8FAD0040   LW T5, 64(SP)
+9D00065C  8FAC003C   LW T4, 60(SP)
+9D000660  8FAB0038   LW T3, 56(SP)
+9D000664  8FAA0034   LW T2, 52(SP)
+9D000668  8FA90030   LW T1, 48(SP)
+9D00066C  8FA8002C   LW T0, 44(SP)
+9D000670  8FA70028   LW A3, 40(SP)
+9D000674  8FA60024   LW A2, 36(SP)
+9D000678  8FA50020   LW A1, 32(SP)
+9D00067C  8FA4001C   LW A0, 28(SP)
+9D000680  8FA30018   LW V1, 24(SP)
+9D000684  8FA20014   LW V0, 20(SP)
+9D000688  8FA10010   LW AT, 16(SP)
+9D00068C  41606000   DI ZERO
+9D000690  000000C0   EHB
+9D000694  8FBA006C   LW K0, 108(SP)
+9D000698  8FBB0068   LW K1, 104(SP)
+9D00069C  409A7000   MTC0 K0, EPC
+9D0006A0  8FBA0064   LW K0, 100(SP)
+9D0006A4  27BD0070   ADDIU SP, SP, 112
+9D0006A8  409A6002   MTC0 K0, SRSCtl
+9D0006AC  41DDE800   WRPGPR SP, SP
+9D0006B0  409B6000   MTC0 K1, Status
+9D0006B4  42000018   ERET
+44:                  
+45:                  int main(void) {
+9D0006B8  27BDFFE8   ADDIU SP, SP, -24
+9D0006BC  AFBF0014   SW RA, 20(SP)
+46:                  
+47:                      ANSELA=0;
+9D0006C0  3C02BF88   LUI V0, -16504
+9D0006C4  AC406000   SW ZERO, 24576(V0)
+48:                      ANSELB=0;
+9D0006C8  3C02BF88   LUI V0, -16504
+9D0006CC  AC406100   SW ZERO, 24832(V0)
+49:                     
+50:                      unsigned char cnt1=0,cnt2=0,cnt3=0;
+51:                      
+52:                      BMXCONbits.BMXWSDRM=0;
+9D0006D0  3C02BF88   LUI V0, -16504
+9D0006D4  8C432000   LW V1, 8192(V0)
+9D0006D8  7C033184   INS V1, ZERO, 6, 1
+9D0006DC  AC432000   SW V1, 8192(V0)
+53:                      TRISAbits.TRISA0=1;
+9D0006E0  3C02BF88   LUI V0, -16504
+9D0006E4  90436010   LBU V1, 24592(V0)
+9D0006E8  24040001   ADDIU A0, ZERO, 1
+9D0006EC  7C830004   INS V1, A0, 0, 1
+9D0006F0  A0436010   SB V1, 24592(V0)
+54:                      TRISBbits.TRISB9=1;
+9D0006F4  3C02BF88   LUI V0, -16504
+9D0006F8  94436110   LHU V1, 24848(V0)
+9D0006FC  7C834A44   INS V1, A0, 9, 1
+9D000700  A4436110   SH V1, 24848(V0)
+55:                      TRISBbits.TRISB15=0;
+9D000704  94436110   LHU V1, 24848(V0)
+9D000708  7C037BC4   INS V1, ZERO, 15, 1
+9D00070C  A4436110   SH V1, 24848(V0)
+56:                      TRISBbits.TRISB14=0;
+9D000710  94436110   LHU V1, 24848(V0)
+9D000714  7C037384   INS V1, ZERO, 14, 1
+9D000718  A4436110   SH V1, 24848(V0)
+57:                      TRISBbits.TRISB13=0;
+9D00071C  94436110   LHU V1, 24848(V0)
+9D000720  7C036B44   INS V1, ZERO, 13, 1
+9D000724  A4436110   SH V1, 24848(V0)
+58:                      LATB=0;
+9D000728  3C02BF88   LUI V0, -16504
+9D00072C  AC406130   SW ZERO, 24880(V0)
+59:                  
+60:                  
+61:                      LCD_init();
+9D000730  0F4000C1   JAL LCD_init
+9D000734  00000000   NOP
+62:                      LCD_puts(((unsigned char *)"CN ISR RA0 RB9\0"));
+9D000738  3C049D00   LUI A0, -25344
+9D00073C  0F400106   JAL LCD_puts
+9D000740  24840C64   ADDIU A0, A0, 3172
+63:                      
+64:                      __builtin_disable_interrupts();    
+9D000744  41626000   DI V0
+9D000748  000000C0   EHB
+65:                          
+66:                      Timer2_config(TMR2_PRESCALA_256,3906-1);
+9D00074C  24040070   ADDIU A0, ZERO, 112
+9D000750  0F400230   JAL Timer2_config
+9D000754  24050F41   ADDIU A1, ZERO, 3905
+67:                      Timer2_cntrl(1);
+9D000758  0F400238   JAL Timer2_cntrl
+9D00075C  24040001   ADDIU A0, ZERO, 1
+68:                      INTCONbits.MVEC=1;
+9D000760  3C03BF88   LUI V1, -16504
+9D000764  8C641000   LW A0, 4096(V1)
+9D000768  24020001   ADDIU V0, ZERO, 1
+9D00076C  7C446304   INS A0, V0, 12, 1
+9D000770  AC641000   SW A0, 4096(V1)
+69:                          
+70:                      CNENAbits.CNIEA0=1;
+9D000774  3C03BF88   LUI V1, -16504
+9D000778  90646080   LBU A0, 24704(V1)
+9D00077C  7C440004   INS A0, V0, 0, 1
+9D000780  A0646080   SB A0, 24704(V1)
+71:                      CNCONAbits.ON=1;
+9D000784  3C03BF88   LUI V1, -16504
+9D000788  94646070   LHU A0, 24688(V1)
+9D00078C  7C447BC4   INS A0, V0, 15, 1
+9D000790  A4646070   SH A0, 24688(V1)
+72:                      CNENBbits.CNIEB9=1;
+9D000794  3C03BF88   LUI V1, -16504
+9D000798  94646180   LHU A0, 24960(V1)
+9D00079C  7C444A44   INS A0, V0, 9, 1
+9D0007A0  A4646180   SH A0, 24960(V1)
+73:                      CNCONBbits.ON=1;
+9D0007A4  3C03BF88   LUI V1, -16504
+9D0007A8  94646170   LHU A0, 24944(V1)
+9D0007AC  7C447BC4   INS A0, V0, 15, 1
+9D0007B0  A4646170   SH A0, 24944(V1)
+74:                      
+75:                      IPC8bits.CNIP=6;
+9D0007B4  3C03BF88   LUI V1, -16504
+9D0007B8  8C641110   LW A0, 4368(V1)
+9D0007BC  24050006   ADDIU A1, ZERO, 6
+9D0007C0  7CA4A484   INS A0, A1, 18, 3
+9D0007C4  AC641110   SW A0, 4368(V1)
+76:                      IPC8bits.CNIS=1;
+9D0007C8  8C641110   LW A0, 4368(V1)
+9D0007CC  7C448C04   INS A0, V0, 16, 2
+9D0007D0  AC641110   SW A0, 4368(V1)
+77:                      PORTA;
+9D0007D4  3C03BF88   LUI V1, -16504
+9D0007D8  8C636020   LW V1, 24608(V1)
+78:                      IFS1bits.CNAIF=0;
+9D0007DC  3C04BF88   LUI A0, -16504
+9D0007E0  8C831040   LW V1, 4160(A0)
+9D0007E4  7C036B44   INS V1, ZERO, 13, 1
+9D0007E8  AC831040   SW V1, 4160(A0)
+79:                      IEC1bits.CNAIE=1;   
+9D0007EC  3C03BF88   LUI V1, -16504
+9D0007F0  8C651070   LW A1, 4208(V1)
+9D0007F4  7C456B44   INS A1, V0, 13, 1
+9D0007F8  AC651070   SW A1, 4208(V1)
+80:                      PORTB;
+9D0007FC  3C05BF88   LUI A1, -16504
+9D000800  8CA56120   LW A1, 24864(A1)
+81:                      IFS1bits.CNBIF=0;
+9D000804  8C851040   LW A1, 4160(A0)
+9D000808  7C057384   INS A1, ZERO, 14, 1
+9D00080C  AC851040   SW A1, 4160(A0)
+82:                      IEC1bits.CNBIE=1;
+9D000810  8C641070   LW A0, 4208(V1)
+9D000814  7C447384   INS A0, V0, 14, 1
+9D000818  AC641070   SW A0, 4208(V1)
+83:                      __builtin_enable_interrupts();
+9D00081C  41626020   EI V0
+84:                      
+85:                      while(1)
+86:                      {
+87:                                 
+88:                      }
+89:                          
+90:                  }
+91:                  
+---  f:/workspace/microchip/uc_2018_i/13_teclado_4x4/m_timers.c  ----------------------------------------
+1:                   #include "M_Timers.h"
+2:                   
+3:                   
+4:                   /*Funciones para el timer 1*/
+5:                   void Timer1_config(unsigned int config, unsigned int periodo)
+6:                   {
+7:                       T1CON=config;
+9D000828  3C02BF80   LUI V0, -16512
+9D00082C  AC440600   SW A0, 1536(V0)
+8:                       Timer1_periodo(periodo);
+9:                       Timer1_write(0);
+10:                  }
+11:                  
+12:                  void Timer1_cntrl(unsigned char on_off)
+13:                  {
+14:                      T1CONbits.ON=(on_off&1);
+9D000848  3C02BF80   LUI V0, -16512
+9D00084C  94430600   LHU V1, 1536(V0)
+9D000850  7C837BC4   INS V1, A0, 15, 1
+9D000854  A4430600   SH V1, 1536(V0)
+9D000858  03E00008   JR RA
+9D00085C  00000000   NOP
+15:                  }
+16:                  
+17:                  void Timer1_periodo(unsigned int periodo)
+18:                  {
+19:                      PR1=periodo;
+9D000830  3C02BF80   LUI V0, -16512
+9D000860  3C02BF80   LUI V0, -16512
+9D000864  AC440620   SW A0, 1568(V0)
+9D000868  03E00008   JR RA
+9D00086C  00000000   NOP
+20:                  }
+21:                  
+22:                  unsigned int Timer1_Read(void)
+23:                  {
+24:                      return TMR1;
+9D000870  3C02BF80   LUI V0, -16512
+9D000874  8C420610   LW V0, 1552(V0)
+25:                  }
+9D000878  03E00008   JR RA
+9D00087C  00000000   NOP
+26:                  
+27:                  void Timer1_write(unsigned int valor)
+28:                  {
+29:                      TMR1=valor;
+9D000838  3C02BF80   LUI V0, -16512
+9D000880  3C02BF80   LUI V0, -16512
+9D000884  AC440610   SW A0, 1552(V0)
+9D000888  03E00008   JR RA
+9D00088C  00000000   NOP
+30:                  }
+31:                  
+32:                  unsigned char Timer1_test(void)
+33:                  {
+34:                      if(IFS0bits.T1IF==1)
+9D000890  3C02BF88   LUI V0, -16504
+9D000894  8C431030   LW V1, 4144(V0)
+9D000898  30630010   ANDI V1, V1, 16
+9D00089C  10600006   BEQ V1, ZERO, 0x9D0008B8
+9D0008A0  00001021   ADDU V0, ZERO, ZERO
+35:                      {
+36:                          IFS0bits.T1IF=0;
+9D0008A4  3C02BF88   LUI V0, -16504
+9D0008A8  8C431030   LW V1, 4144(V0)
+9D0008AC  7C032104   INS V1, ZERO, 4, 1
+9D0008B0  AC431030   SW V1, 4144(V0)
+37:                          return 1;
+9D0008B4  24020001   ADDIU V0, ZERO, 1
+38:                      }
+39:                      else
+40:                      {
+41:                          return 0;
+42:                      }
+43:                  }
+9D0008B8  03E00008   JR RA
+9D0008BC  00000000   NOP
+44:                  
+45:                  
+46:                  
+47:                  /*Funciones para el Timer 2*/
+48:                  void Timer2_config(unsigned int config, unsigned int periodo)
+49:                  {
+50:                      T2CON=config;
+9D0008C0  3C02BF80   LUI V0, -16512
+9D0008C4  AC440800   SW A0, 2048(V0)
+51:                      Timer2_periodo(periodo);
+52:                      Timer2_write(0);
+53:                  }
+54:                  
+55:                  void Timer2_cntrl(unsigned char on_off)
+56:                  {
+57:                      T2CONbits.ON=(on_off&1);
+9D0008E0  3C02BF80   LUI V0, -16512
+9D0008E4  94430800   LHU V1, 2048(V0)
+9D0008E8  7C837BC4   INS V1, A0, 15, 1
+9D0008EC  A4430800   SH V1, 2048(V0)
+9D0008F0  03E00008   JR RA
+9D0008F4  00000000   NOP
+58:                  }
+59:                  
+60:                  void Timer2_periodo(unsigned int periodo)
+61:                  {
+62:                      PR2=periodo;
+9D0008C8  3C02BF80   LUI V0, -16512
+9D0008F8  3C02BF80   LUI V0, -16512
+9D0008FC  AC440820   SW A0, 2080(V0)
+9D000900  03E00008   JR RA
+9D000904  00000000   NOP
+63:                  }
+64:                  
+65:                  unsigned int Timer2_Read(void)
+66:                  {
+67:                      return TMR2;
+9D000908  3C02BF80   LUI V0, -16512
+9D00090C  8C420810   LW V0, 2064(V0)
+68:                  }
+9D000910  03E00008   JR RA
+9D000914  00000000   NOP
+69:                  
+70:                  void Timer2_write(unsigned int valor)
+71:                  {
+72:                      TMR2=valor;
+9D0008D0  3C02BF80   LUI V0, -16512
+9D000918  3C02BF80   LUI V0, -16512
+9D00091C  AC440810   SW A0, 2064(V0)
+9D000920  03E00008   JR RA
+9D000924  00000000   NOP
+73:                  }
+74:                  
+75:                  unsigned char Timer2_test(void)
+76:                  {
+77:                      if(IFS0bits.T2IF==1)
+9D000928  3C02BF88   LUI V0, -16504
+9D00092C  8C431030   LW V1, 4144(V0)
+9D000930  30630200   ANDI V1, V1, 512
+9D000934  10600006   BEQ V1, ZERO, 0x9D000950
+9D000938  00001021   ADDU V0, ZERO, ZERO
+78:                      {
+79:                          IFS0bits.T2IF=0;
+9D00093C  3C02BF88   LUI V0, -16504
+9D000940  8C431030   LW V1, 4144(V0)
+9D000944  7C034A44   INS V1, ZERO, 9, 1
+9D000948  AC431030   SW V1, 4144(V0)
+80:                          return 1;
+9D00094C  24020001   ADDIU V0, ZERO, 1
+81:                      }
+82:                      else
+83:                      {
+84:                          return 0;
+85:                      }
+86:                  }
+9D000950  03E00008   JR RA
+---  f:/workspace/microchip/uc_2018_i/13_teclado_4x4/m_lcd_16x2.c  --------------------------------------
+1:                   #include "M_LCD_16X2.h"
+2:                   
+3:                   void LCD_init(void)
+4:                   {
+9D000304  27BDFFE8   ADDIU SP, SP, -24
+9D000308  AFBF0014   SW RA, 20(SP)
+5:                       DIR_RS=0;
+9D00030C  3C02BF88   LUI V0, -16504
+9D000310  94436110   LHU V1, 24848(V0)
+9D000314  7C031084   INS V1, ZERO, 2, 1
+9D000318  A4436110   SH V1, 24848(V0)
+6:                       DIR_E=0;
+9D00031C  94436110   LHU V1, 24848(V0)
+9D000320  7C0318C4   INS V1, ZERO, 3, 1
+9D000324  A4436110   SH V1, 24848(V0)
+7:                       DIR_D0=0;
+9D000328  94436110   LHU V1, 24848(V0)
+9D00032C  7C032104   INS V1, ZERO, 4, 1
+9D000330  A4436110   SH V1, 24848(V0)
+8:                       DIR_D1=0;
+9D000334  94436110   LHU V1, 24848(V0)
+9D000338  7C032944   INS V1, ZERO, 5, 1
+9D00033C  A4436110   SH V1, 24848(V0)
+9:                       DIR_D2=0;
+9D000340  94436110   LHU V1, 24848(V0)
+9D000344  7C0339C4   INS V1, ZERO, 7, 1
+9D000348  A4436110   SH V1, 24848(V0)
+10:                      DIR_D3=0;
+9D00034C  94436110   LHU V1, 24848(V0)
+9D000350  7C034204   INS V1, ZERO, 8, 1
+9D000354  A4436110   SH V1, 24848(V0)
+11:                      
+12:                      RS=0;
+9D000358  3C02BF88   LUI V0, -16504
+9D00035C  94436130   LHU V1, 24880(V0)
+9D000360  7C031084   INS V1, ZERO, 2, 1
+9D000364  A4436130   SH V1, 24880(V0)
+13:                      E=0;
+9D000368  94436130   LHU V1, 24880(V0)
+9D00036C  7C0318C4   INS V1, ZERO, 3, 1
+9D000370  A4436130   SH V1, 24880(V0)
+14:                      D0=0;
+9D000374  94436130   LHU V1, 24880(V0)
+9D000378  7C032104   INS V1, ZERO, 4, 1
+9D00037C  A4436130   SH V1, 24880(V0)
+15:                      D1=0;
+9D000380  94436130   LHU V1, 24880(V0)
+9D000384  7C032944   INS V1, ZERO, 5, 1
+9D000388  A4436130   SH V1, 24880(V0)
+16:                      D2=0;
+9D00038C  94436130   LHU V1, 24880(V0)
+9D000390  7C0339C4   INS V1, ZERO, 7, 1
+9D000394  A4436130   SH V1, 24880(V0)
+17:                      D3=0;
+9D000398  94436130   LHU V1, 24880(V0)
+9D00039C  7C034204   INS V1, ZERO, 8, 1
+9D0003A0  A4436130   SH V1, 24880(V0)
+18:                      delay_ms(15);
+9D0003A4  0F40028D   JAL delay_ms
+9D0003A8  2404000F   ADDIU A0, ZERO, 15
+19:                      
+20:                      LCD_cmd4(0x30);
+9D0003AC  0F400000   JAL LCD_cmd4
+9D0003B0  24040030   ADDIU A0, ZERO, 48
+21:                      delay_ms(5);
+9D0003B4  0F40028D   JAL delay_ms
+9D0003B8  24040005   ADDIU A0, ZERO, 5
+22:                      LCD_cmd4(0x30);
+9D0003BC  0F400000   JAL LCD_cmd4
+9D0003C0  24040030   ADDIU A0, ZERO, 48
+23:                      delay_us(200);
+9D0003C4  0F4002A0   JAL delay_us
+9D0003C8  240400C8   ADDIU A0, ZERO, 200
+24:                      LCD_cmd4(0x30);
+9D0003CC  0F400000   JAL LCD_cmd4
+9D0003D0  24040030   ADDIU A0, ZERO, 48
+25:                      delay_us(200);
+9D0003D4  0F4002A0   JAL delay_us
+9D0003D8  240400C8   ADDIU A0, ZERO, 200
+26:                      LCD_cmd4(0x20);
+9D0003DC  0F400000   JAL LCD_cmd4
+9D0003E0  24040020   ADDIU A0, ZERO, 32
+27:                      LCD_cmd(0x28);
+9D0003E4  0F400029   JAL LCD_cmd
+9D0003E8  24040028   ADDIU A0, ZERO, 40
+28:                      LCD_cmd(0x0f);
+9D0003EC  0F400029   JAL LCD_cmd
+9D0003F0  2404000F   ADDIU A0, ZERO, 15
+29:                      LCD_cmd(0x06);
+9D0003F4  0F400029   JAL LCD_cmd
+9D0003F8  24040006   ADDIU A0, ZERO, 6
+30:                      LCD_cmd(0x01);
+9D0003FC  0F400029   JAL LCD_cmd
+9D000400  24040001   ADDIU A0, ZERO, 1
+31:                      delay_ms(2);
+9D000404  0F40028D   JAL delay_ms
+9D000408  24040002   ADDIU A0, ZERO, 2
+32:                  }
+9D00040C  8FBF0014   LW RA, 20(SP)
+9D000410  03E00008   JR RA
+9D000414  27BD0018   ADDIU SP, SP, 24
+33:                  
+34:                  static void LCD_cmd4(unsigned char cmd)
+35:                  {
+9D000000  27BDFFE8   ADDIU SP, SP, -24
+9D000004  AFBF0014   SW RA, 20(SP)
+9D000008  AFB00010   SW S0, 16(SP)
+36:                      RS=0;
+9D00000C  3C02BF88   LUI V0, -16504
+9D000010  94436130   LHU V1, 24880(V0)
+9D000014  7C031084   INS V1, ZERO, 2, 1
+9D000018  A4436130   SH V1, 24880(V0)
+37:                      D0=(cmd>>4)&1;
+9D00001C  7C850100   EXT A1, A0, 4, 1
+9D000020  94436130   LHU V1, 24880(V0)
+9D000024  7CA32104   INS V1, A1, 4, 1
+9D000028  A4436130   SH V1, 24880(V0)
+38:                      D1=(cmd>>5)&1;
+9D00002C  7C850140   EXT A1, A0, 5, 1
+9D000030  94436130   LHU V1, 24880(V0)
+9D000034  7CA32944   INS V1, A1, 5, 1
+9D000038  A4436130   SH V1, 24880(V0)
+39:                      D2=(cmd>>6)&1;
+9D00003C  7C850180   EXT A1, A0, 6, 1
+9D000040  94436130   LHU V1, 24880(V0)
+9D000044  7CA339C4   INS V1, A1, 7, 1
+9D000048  A4436130   SH V1, 24880(V0)
+40:                      D3=(cmd>>7)&1;
+9D00004C  000421C2   SRL A0, A0, 7
+9D000050  94436130   LHU V1, 24880(V0)
+9D000054  7C834204   INS V1, A0, 8, 1
+9D000058  A4436130   SH V1, 24880(V0)
+41:                      Nop();
+9D00005C  00000040   SSNOP
+42:                      Nop();
+9D000060  00000040   SSNOP
+43:                      E=1;
+9D000064  3C10BF88   LUI S0, -16504
+9D000068  96026130   LHU V0, 24880(S0)
+9D00006C  24030001   ADDIU V1, ZERO, 1
+9D000070  7C6218C4   INS V0, V1, 3, 1
+9D000074  A6026130   SH V0, 24880(S0)
+44:                      delay_us(1);
+9D000078  0F4002A0   JAL delay_us
+9D00007C  24040001   ADDIU A0, ZERO, 1
+45:                      E=0;
+9D000080  96026130   LHU V0, 24880(S0)
+9D000084  7C0218C4   INS V0, ZERO, 3, 1
+9D000088  A6026130   SH V0, 24880(S0)
+46:                      delay_us(50);
+9D00008C  0F4002A0   JAL delay_us
+9D000090  24040032   ADDIU A0, ZERO, 50
+47:                  }
+9D000094  8FBF0014   LW RA, 20(SP)
+9D000098  8FB00010   LW S0, 16(SP)
+9D00009C  03E00008   JR RA
+9D0000A0  27BD0018   ADDIU SP, SP, 24
+48:                  
+49:                  static void LCD_cmd(unsigned char cmd)
+50:                  {
+9D0000A4  27BDFFE0   ADDIU SP, SP, -32
+9D0000A8  AFBF001C   SW RA, 28(SP)
+9D0000AC  AFB10018   SW S1, 24(SP)
+9D0000B0  AFB00014   SW S0, 20(SP)
+9D0000B4  00808021   ADDU S0, A0, ZERO
+51:                      RS=0;
+9D0000B8  3C02BF88   LUI V0, -16504
+9D0000BC  94436130   LHU V1, 24880(V0)
+9D0000C0  7C031084   INS V1, ZERO, 2, 1
+9D0000C4  A4436130   SH V1, 24880(V0)
+52:                      D0=(cmd>>4)&1;
+9D0000C8  7C840100   EXT A0, A0, 4, 1
+9D0000CC  94436130   LHU V1, 24880(V0)
+9D0000D0  7C832104   INS V1, A0, 4, 1
+9D0000D4  A4436130   SH V1, 24880(V0)
+53:                      D1=(cmd>>5)&1;
+9D0000D8  7E040140   EXT A0, S0, 5, 1
+9D0000DC  94436130   LHU V1, 24880(V0)
+9D0000E0  7C832944   INS V1, A0, 5, 1
+9D0000E4  A4436130   SH V1, 24880(V0)
+54:                      D2=(cmd>>6)&1;
+9D0000E8  7E040180   EXT A0, S0, 6, 1
+9D0000EC  94436130   LHU V1, 24880(V0)
+9D0000F0  7C8339C4   INS V1, A0, 7, 1
+9D0000F4  A4436130   SH V1, 24880(V0)
+55:                      D3=(cmd>>7)&1;
+9D0000F8  001021C2   SRL A0, S0, 7
+9D0000FC  94436130   LHU V1, 24880(V0)
+9D000100  7C834204   INS V1, A0, 8, 1
+9D000104  A4436130   SH V1, 24880(V0)
+56:                      Nop();
+9D000108  00000040   SSNOP
+57:                      Nop();
+9D00010C  00000040   SSNOP
+58:                      E=1;
+9D000110  3C11BF88   LUI S1, -16504
+9D000114  96226130   LHU V0, 24880(S1)
+9D000118  24030001   ADDIU V1, ZERO, 1
+9D00011C  7C6218C4   INS V0, V1, 3, 1
+9D000120  A6226130   SH V0, 24880(S1)
+59:                      delay_us(1);
+9D000124  0F4002A0   JAL delay_us
+9D000128  24040001   ADDIU A0, ZERO, 1
+60:                      E=0;
+9D00012C  96226130   LHU V0, 24880(S1)
+9D000130  7C0218C4   INS V0, ZERO, 3, 1
+9D000134  A6226130   SH V0, 24880(S1)
+61:                      Nop();
+9D000138  00000040   SSNOP
+62:                      Nop();
+9D00013C  00000040   SSNOP
+63:                      D0=(cmd)&1;
+9D000140  3C02BF88   LUI V0, -16504
+9D000144  94436130   LHU V1, 24880(V0)
+9D000148  7E032104   INS V1, S0, 4, 1
+9D00014C  A4436130   SH V1, 24880(V0)
+64:                      D1=(cmd>>1)&1;
+9D000150  7E040040   EXT A0, S0, 1, 1
+9D000154  94436130   LHU V1, 24880(V0)
+9D000158  7C832944   INS V1, A0, 5, 1
+9D00015C  A4436130   SH V1, 24880(V0)
+65:                      D2=(cmd>>2)&1;
+9D000160  7E040080   EXT A0, S0, 2, 1
+9D000164  94436130   LHU V1, 24880(V0)
+9D000168  7C8339C4   INS V1, A0, 7, 1
+9D00016C  A4436130   SH V1, 24880(V0)
+66:                      D3=(cmd>>3)&1;
+9D000170  7E1000C0   EXT S0, S0, 3, 1
+9D000174  94436130   LHU V1, 24880(V0)
+9D000178  7E034204   INS V1, S0, 8, 1
+9D00017C  A4436130   SH V1, 24880(V0)
+67:                      Nop();
+9D000180  00000040   SSNOP
+68:                      Nop();
+9D000184  00000040   SSNOP
+69:                      E=1;
+9D000188  3C10BF88   LUI S0, -16504
+9D00018C  96026130   LHU V0, 24880(S0)
+9D000190  24030001   ADDIU V1, ZERO, 1
+9D000194  7C6218C4   INS V0, V1, 3, 1
+9D000198  A6026130   SH V0, 24880(S0)
+70:                      delay_us(1);
+9D00019C  0F4002A0   JAL delay_us
+9D0001A0  24040001   ADDIU A0, ZERO, 1
+71:                      E=0;
+9D0001A4  96026130   LHU V0, 24880(S0)
+9D0001A8  7C0218C4   INS V0, ZERO, 3, 1
+9D0001AC  A6026130   SH V0, 24880(S0)
+72:                      delay_us(50);
+9D0001B0  0F4002A0   JAL delay_us
+9D0001B4  24040032   ADDIU A0, ZERO, 50
+73:                  }
+9D0001B8  8FBF001C   LW RA, 28(SP)
+9D0001BC  8FB10018   LW S1, 24(SP)
+9D0001C0  8FB00014   LW S0, 20(SP)
+9D0001C4  03E00008   JR RA
+9D0001C8  27BD0020   ADDIU SP, SP, 32
+74:                  
+75:                  static void LCD_data(unsigned char dato)
+76:                  {
+9D0001CC  27BDFFE0   ADDIU SP, SP, -32
+9D0001D0  AFBF001C   SW RA, 28(SP)
+9D0001D4  AFB10018   SW S1, 24(SP)
+9D0001D8  AFB00014   SW S0, 20(SP)
+9D0001DC  00808021   ADDU S0, A0, ZERO
+77:                      RS=1;
+9D0001E0  3C02BF88   LUI V0, -16504
+9D0001E4  94436130   LHU V1, 24880(V0)
+9D0001E8  24040001   ADDIU A0, ZERO, 1
+9D0001EC  7C831084   INS V1, A0, 2, 1
+9D0001F0  A4436130   SH V1, 24880(V0)
+78:                      D0=(dato>>4)&1;
+9D0001F4  7E040100   EXT A0, S0, 4, 1
+9D0001F8  94436130   LHU V1, 24880(V0)
+9D0001FC  7C832104   INS V1, A0, 4, 1
+9D000200  A4436130   SH V1, 24880(V0)
+79:                      D1=(dato>>5)&1;
+9D000204  7E040140   EXT A0, S0, 5, 1
+9D000208  94436130   LHU V1, 24880(V0)
+9D00020C  7C832944   INS V1, A0, 5, 1
+9D000210  A4436130   SH V1, 24880(V0)
+80:                      D2=(dato>>6)&1;
+9D000214  7E040180   EXT A0, S0, 6, 1
+9D000218  94436130   LHU V1, 24880(V0)
+9D00021C  7C8339C4   INS V1, A0, 7, 1
+9D000220  A4436130   SH V1, 24880(V0)
+81:                      D3=(dato>>7)&1;
+9D000224  001021C2   SRL A0, S0, 7
+9D000228  94436130   LHU V1, 24880(V0)
+9D00022C  7C834204   INS V1, A0, 8, 1
+9D000230  A4436130   SH V1, 24880(V0)
+82:                      Nop();
+9D000234  00000040   SSNOP
+83:                      Nop();
+9D000238  00000040   SSNOP
+84:                      E=1;
+9D00023C  3C11BF88   LUI S1, -16504
+9D000240  96226130   LHU V0, 24880(S1)
+9D000244  24030001   ADDIU V1, ZERO, 1
+9D000248  7C6218C4   INS V0, V1, 3, 1
+9D00024C  A6226130   SH V0, 24880(S1)
+85:                      delay_us(1);
+9D000250  0F4002A0   JAL delay_us
+9D000254  24040001   ADDIU A0, ZERO, 1
+86:                      E=0;
+9D000258  96226130   LHU V0, 24880(S1)
+9D00025C  7C0218C4   INS V0, ZERO, 3, 1
+9D000260  A6226130   SH V0, 24880(S1)
+87:                      Nop();
+9D000264  00000040   SSNOP
+88:                      Nop();
+9D000268  00000040   SSNOP
+89:                      D0=(dato)&1;
+9D00026C  3C02BF88   LUI V0, -16504
+9D000270  94436130   LHU V1, 24880(V0)
+9D000274  7E032104   INS V1, S0, 4, 1
+9D000278  A4436130   SH V1, 24880(V0)
+90:                      D1=(dato>>1)&1;
+9D00027C  7E040040   EXT A0, S0, 1, 1
+9D000280  94436130   LHU V1, 24880(V0)
+9D000284  7C832944   INS V1, A0, 5, 1
+9D000288  A4436130   SH V1, 24880(V0)
+91:                      D2=(dato>>2)&1;
+9D00028C  7E040080   EXT A0, S0, 2, 1
+9D000290  94436130   LHU V1, 24880(V0)
+9D000294  7C8339C4   INS V1, A0, 7, 1
+9D000298  A4436130   SH V1, 24880(V0)
+92:                      D3=(dato>>3)&1;
+9D00029C  7E1000C0   EXT S0, S0, 3, 1
+9D0002A0  94436130   LHU V1, 24880(V0)
+9D0002A4  7E034204   INS V1, S0, 8, 1
+9D0002A8  A4436130   SH V1, 24880(V0)
+93:                      Nop();
+9D0002AC  00000040   SSNOP
+94:                      Nop();
+9D0002B0  00000040   SSNOP
+95:                      E=1;
+9D0002B4  3C10BF88   LUI S0, -16504
+9D0002B8  96026130   LHU V0, 24880(S0)
+9D0002BC  24030001   ADDIU V1, ZERO, 1
+9D0002C0  7C6218C4   INS V0, V1, 3, 1
+9D0002C4  A6026130   SH V0, 24880(S0)
+96:                      delay_us(1);
+9D0002C8  0F4002A0   JAL delay_us
+9D0002CC  24040001   ADDIU A0, ZERO, 1
+97:                      E=0;
+9D0002D0  96026130   LHU V0, 24880(S0)
+9D0002D4  7C0218C4   INS V0, ZERO, 3, 1
+9D0002D8  A6026130   SH V0, 24880(S0)
+98:                      delay_us(50);
+9D0002DC  0F4002A0   JAL delay_us
+9D0002E0  24040032   ADDIU A0, ZERO, 50
+99:                      RS=0;
+9D0002E4  96026130   LHU V0, 24880(S0)
+9D0002E8  7C021084   INS V0, ZERO, 2, 1
+9D0002EC  A6026130   SH V0, 24880(S0)
+100:                 }
+9D0002F0  8FBF001C   LW RA, 28(SP)
+9D0002F4  8FB10018   LW S1, 24(SP)
+9D0002F8  8FB00014   LW S0, 20(SP)
+9D0002FC  03E00008   JR RA
+9D000300  27BD0020   ADDIU SP, SP, 32
+101:                 
+102:                 void LCD_puts(unsigned char *msg)
+103:                 {
+9D000418  27BDFFE8   ADDIU SP, SP, -24
+9D00041C  AFBF0014   SW RA, 20(SP)
+9D000420  AFB00010   SW S0, 16(SP)
+9D000424  00808021   ADDU S0, A0, ZERO
+104:                     while(*(msg)!='\0')
+9D000428  90840000   LBU A0, 0(A0)
+9D00042C  10800006   BEQ A0, ZERO, 0x9D000448
+9D000430  8FBF0014   LW RA, 20(SP)
+9D00043C  92040000   LBU A0, 0(S0)
+9D000440  1480FFFC   BNE A0, ZERO, 0x9D000434
+9D000444  8FBF0014   LW RA, 20(SP)
+105:                     {
+106:                         LCD_data(*(msg++));
+9D000434  0F400073   JAL LCD_data
+9D000438  26100001   ADDIU S0, S0, 1
+107:                     }
+108:                 }
+9D000448  8FB00010   LW S0, 16(SP)
+9D00044C  03E00008   JR RA
+9D000450  27BD0018   ADDIU SP, SP, 24
+109:                 
+110:                 void LCD_putc(unsigned char caracter)
+111:                 {
+9D000454  27BDFFE8   ADDIU SP, SP, -24
+9D000458  AFBF0014   SW RA, 20(SP)
+112:                     LCD_data(caracter);
+9D00045C  0F400073   JAL LCD_data
+9D000460  00000000   NOP
+113:                 }
+9D000464  8FBF0014   LW RA, 20(SP)
+9D000468  03E00008   JR RA
+9D00046C  27BD0018   ADDIU SP, SP, 24
+114:                 
+115:                 
+116:                 void lcd_xy(unsigned char x, unsigned char y)
+117:                 {
+9D000470  27BDFFE8   ADDIU SP, SP, -24
+9D000474  AFBF0014   SW RA, 20(SP)
+118:                     unsigned char tmp=0;
+119:                     tmp=x|0x80;
+9D000478  34820080   ORI V0, A0, 128
+9D00047C  348400C0   ORI A0, A0, 192
+120:                     if(y!=0)
+121:                     {
+122:                         tmp|=0x40;
+123:                     }
+124:                     LCD_cmd(tmp);
+9D000480  0F400029   JAL LCD_cmd
+9D000484  0045200A   MOVZ A0, V0, A1
+125:                 }
+9D000488  8FBF0014   LW RA, 20(SP)
+9D00048C  03E00008   JR RA
+9D000490  27BD0018   ADDIU SP, SP, 24
+126:                 
+127:                 void lcd_clrscr(void)
+128:                 {
+9D000494  27BDFFE8   ADDIU SP, SP, -24
+9D000498  AFBF0014   SW RA, 20(SP)
+129:                     LCD_cmd(0x01);
+9D00049C  0F400029   JAL LCD_cmd
+9D0004A0  24040001   ADDIU A0, ZERO, 1
+130:                     delay_ms(2);
+9D0004A4  0F40028D   JAL delay_ms
+9D0004A8  24040002   ADDIU A0, ZERO, 2
+131:                 }
+9D0004AC  8FBF0014   LW RA, 20(SP)
+---  f:/workspace/microchip/uc_2018_i/13_teclado_4x4/delay.c  -------------------------------------------
+1:                   #include "delay.h"
+2:                   
+3:                   void delay_ms(unsigned int ms)
+4:                   {
+9D000A34  27BDFFF8   ADDIU SP, SP, -8
+9D000A38  AFBF0004   SW RA, 4(SP)
+5:                       unsigned int delay=0, tick=0, tock=0, elapsed=0;
+6:                       delay=(SYSCLK/2000)*ms;
+9D000A3C  00041080   SLL V0, A0, 2
+9D000A40  000419C0   SLL V1, A0, 7
+9D000A44  00621823   SUBU V1, V1, V0
+9D000A48  00642021   ADDU A0, V1, A0
+9D000A4C  00041880   SLL V1, A0, 2
+9D000A50  00832021   ADDU A0, A0, V1
+9D000A54  00041940   SLL V1, A0, 5
+7:                       tick=_CP0_GET_COUNT();
+9D000A58  40044800   MFC0 A0, Count
+8:                       
+9:                       while(elapsed<delay)
+9D000A5C  10600006   BEQ V1, ZERO, 0x9D000A78
+9D000A60  8FBF0004   LW RA, 4(SP)
+9D000A6C  0043102B   SLTU V0, V0, V1
+9D000A70  1440FFFC   BNE V0, ZERO, 0x9D000A64
+9D000A74  8FBF0004   LW RA, 4(SP)
+10:                      {
+11:                          tock=_CP0_GET_COUNT();
+9D000A64  40024800   MFC0 V0, Count
+12:                          if(tock<=tick)
+13:                          {
+14:                              elapsed=(0xffffffff-tick)+tock+1;
+15:                          }
+16:                          else
+17:                          {
+18:                              elapsed = tock - tick;
+9D000A68  00441023   SUBU V0, V0, A0
+19:                          }
+20:                      }
+21:                  }
+9D000A78  03E00008   JR RA
+9D000A7C  27BD0008   ADDIU SP, SP, 8
+22:                  
+23:                  
+24:                  void delay_us(unsigned int us)
+25:                  {
+9D000A80  27BDFFF8   ADDIU SP, SP, -8
+9D000A84  AFBF0004   SW RA, 4(SP)
+26:                      unsigned int delay=0, tick=0, tock=0, elapsed=0;
+27:                      delay=(SYSCLK/2000000)*us;
+9D000A88  00041880   SLL V1, A0, 2
+9D000A8C  00042100   SLL A0, A0, 4
+9D000A90  00641821   ADDU V1, V1, A0
+28:                      tick=_CP0_GET_COUNT();
+9D000A94  40044800   MFC0 A0, Count
+29:                      
+30:                      while(elapsed<delay)
+9D000A98  10600006   BEQ V1, ZERO, 0x9D000AB4
+9D000A9C  8FBF0004   LW RA, 4(SP)
+9D000AA8  0043102B   SLTU V0, V0, V1
+9D000AAC  1440FFFC   BNE V0, ZERO, 0x9D000AA0
+9D000AB0  8FBF0004   LW RA, 4(SP)
+31:                      {
+32:                          tock=_CP0_GET_COUNT();
+9D000AA0  40024800   MFC0 V0, Count
+33:                          if(tock<=tick)
+34:                          {
+35:                              elapsed=(0xffffffff-tick)+tock+1;
+36:                          }
+37:                          else
+38:                          {
+39:                              elapsed = tock - tick;
+9D000AA4  00441023   SUBU V0, V0, A0
+40:                          }
+41:                      }
+42:                  }
+9D000AB4  03E00008   JR RA
